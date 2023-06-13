@@ -5,10 +5,21 @@ void main() {
     poder: 'ninguno',
   ); //instacia de mi clase
 
+  final heroe2 = Heroe.fromJson({
+    'nombre': 'Super Man',
+    'poder': 'Volar',
+    'debilidad': 'Kriptonita',
+  });
+
   // heroe1.nombre = 'Superman';
 
   print(heroe1.nombre);
   print(heroe1.poder);
+  print(heroe1.debilidad);
+
+  print(heroe2.nombre);
+  print(heroe2.poder);
+  print(heroe2.debilidad);
 }
 
 class Heroe {
@@ -17,8 +28,9 @@ class Heroe {
   //publico
 
   // "late", especifica a la clase, que las propiedes obtendran un valor luego de instanciarse
-  late final String nombre;
-  late final String poder;
+  final String nombre;
+  final String poder;
+  String? debilidad;
 
   //Constructor
   //tratando de instaciar la clase
@@ -27,7 +39,31 @@ class Heroe {
   //   this.poder = param2;
   // }
 
-  Heroe({required this.nombre, required this.poder});
+  Heroe({
+    required this.nombre,
+    required this.poder,
+    this.debilidad,
+  });
+
+/*
+ 
+{
+  "nombre": "Batman",
+  "poder": "ninguno",
+  "edad":29
+}
+
+
+ */
+
+  //constructores con nombre
+  factory Heroe.fromJson(Map<String, dynamic> json) {
+    return Heroe(
+      nombre: json['nombre'],
+      poder: json['poder'],
+      debilidad: json['debilidad'],
+    );
+  }
 
   // comportamientos
 }
