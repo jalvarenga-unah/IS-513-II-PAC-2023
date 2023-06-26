@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 //Hay 2 tipos de Widgets
-// 1: Widgest con estado
-// 2: Widgets sin estado
+// 1: Widgest con estado: StatefulWidget
+// 2: Widgets sin estado: StatelessWidget
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   final estilo = const TextStyle(
     fontSize: 40,
     fontWeight: FontWeight.w800,
@@ -21,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Mi primer App'),
@@ -42,6 +50,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.purple[600],
           onPressed: incrementar,
@@ -53,5 +62,9 @@ class MyApp extends StatelessWidget {
 
   void incrementar() {
     contador++;
+
+    // notificar que hubo un cambio en el estado y
+    //se debe redibujar
+    setState(() {});
   }
 }
