@@ -1,3 +1,7 @@
+import 'package:componentes/src/shared/constantes.dart';
+import 'package:componentes/src/shared/not_found.dart';
+import 'package:componentes/src/shared/rutas.dart';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -8,15 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      initialRoute: Rutas.inicio.name,
+      routes: rutas,
+      onGenerateRoute: (settings) {
+        // print(settings.name);
+        return MaterialPageRoute(builder: (context) {
+          return const NotFound();
+        });
+      },
     );
   }
 }

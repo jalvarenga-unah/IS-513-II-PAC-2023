@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'botones_flotantes.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
