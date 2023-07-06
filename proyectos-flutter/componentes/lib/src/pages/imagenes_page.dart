@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ImagenesPage extends StatelessWidget {
@@ -9,19 +10,19 @@ class ImagenesPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Imagenes'),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image(
+              const Image(
                 image: AssetImage('assets/logo-unah-vs-github.jpg'),
                 width: 350,
                 fit: BoxFit.cover,
               ),
               // Image.asset('assets/logo-unah-vs-github.jpg')
-              SizedBox(
+              const SizedBox(
                 width: double.infinity,
                 child: Card(
                   color: Colors.blue,
@@ -32,6 +33,21 @@ class ImagenesPage extends StatelessWidget {
                     height: 200,
                   ),
                 ),
+              ),
+              CachedNetworkImage(
+                placeholder: (context, url) {
+                  return const CircularProgressIndicator();
+                },
+                errorWidget: (context, url, error) {
+                  return const Icon(
+                    Icons.no_photography,
+                    color: Colors.red,
+                    size: 100,
+                  );
+                },
+                imageUrl:
+                    'https://1.bp.blogspot.com/-9EQ8GPdCjU0/XA2ZtxaVbGI/AAAAAAAAPV4/lYHRhWPRuFYZ-kAb5vANsHp-olPTRRz7ACLcBGAs/s640/LOGO%2BUNAH%2BPHOTOSHOP.png',
+                fit: BoxFit.cover,
               )
             ],
           ),

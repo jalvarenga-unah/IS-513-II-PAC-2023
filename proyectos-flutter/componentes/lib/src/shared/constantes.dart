@@ -1,4 +1,4 @@
 // const nombresRutas = {'home': "/", "listas": '/listas'};
 
 //Enums
-enum Rutas { inicio, listasConstrucor, imagenesPage, listas }
+enum Rutas { inicio, listasConstrucor, imagenesPage, listas, inputsPage }
