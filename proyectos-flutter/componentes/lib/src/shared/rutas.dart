@@ -11,5 +11,5 @@ final rutas = {
   Rutas.listas.name: (context) => const ListasPage(),
   Rutas.listasConstrucor.name: (context) => const ListaConstPage(),
   Rutas.imagenesPage.name: (context) => const ImagenesPage(),
-  Rutas.inputsPage.name: (context) => const InputsPage(),
+  Rutas.inputsPage.name: (context) => InputsPage(),
 };
