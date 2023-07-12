@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/input.dart';
+import '../widgets/input_form.dart';
 
 class InputsPage extends StatelessWidget {
   InputsPage({super.key});
@@ -22,67 +22,38 @@ class InputsPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TextFormField(
+              InputForm(
+                label: 'Ingrese su nombre',
+                icon: Icons.person,
                 controller: nombreController,
-                style: const TextStyle(color: Colors.blue),
-                // keyboardType: TextInputType.number,
-                // maxLines: 2,
-                maxLength: 15,
-                obscureText: false,
-                decoration: const InputDecoration(
-                  label: Text('Ingrese su nombre'),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.deepPurple,
-                  ),
-                  // suffixIcon: Icon(Icons.accessibility),
-                  border: OutlineInputBorder(),
-                ),
-                validator: (valor) {
-                  //esto es un "error"
-                  if (valor!.isEmpty) return 'Ingrese su nombre';
-
-                  return null;
-                },
-                onChanged: (value) {
-                  //
-                },
               ),
               const SizedBox(
                 height: 10,
               ),
-              const InputForm(
+              InputForm(
                 label: 'Ingrese su telefono',
                 icon: Icons.phone,
-              ),
-              const InputForm(
-                label: 'Ingrese una contraseña',
-                icon: Icons.password,
+                type: TextInputType.phone,
+                controller: TextEditingController(),
               ),
               const SizedBox(
                 height: 10,
               ),
-              TextFormField(
+              InputForm(
+                label: 'Ingrese una contraseña',
+                icon: Icons.password,
+                obscureText: true,
+                mostrarBoton: true,
+                controller: TextEditingController(),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              InputForm(
+                label: 'Ingrese su correo',
+                icon: Icons.email,
+                type: TextInputType.emailAddress,
                 controller: correoController,
-                decoration: const InputDecoration(
-                  label: Text('Ingrese su correo'),
-                  prefixIcon: Icon(
-                    Icons.email,
-                    color: Colors.deepPurple,
-                  ),
-                  // suffixIcon: Icon(Icons.accessibility),
-
-                  border: OutlineInputBorder(),
-                ),
-                validator: (valor) {
-                  if (valor!.isEmpty) return 'Ingrese su nombre';
-
-                  if (valor.length <= 10) {
-                    return 'debe tener mas de 10 caracteres';
-                  }
-
-                  return null;
-                },
               ),
               const Spacer(),
               // const ElevatedButton(onPressed: null, child: Text('holi'))
