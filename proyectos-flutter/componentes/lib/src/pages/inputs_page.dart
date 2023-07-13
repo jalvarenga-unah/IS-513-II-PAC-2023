@@ -26,6 +26,13 @@ class InputsPage extends StatelessWidget {
                 label: 'Ingrese su nombre',
                 icon: Icons.person,
                 controller: nombreController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Ingrese un nombre';
+                  }
+
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -35,6 +42,13 @@ class InputsPage extends StatelessWidget {
                 icon: Icons.phone,
                 type: TextInputType.phone,
                 controller: TextEditingController(),
+                validator: (value) {
+                  if (value!.length != 8) {
+                    return 'Ingrese un telefono valido';
+                  }
+
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -45,6 +59,12 @@ class InputsPage extends StatelessWidget {
                 obscureText: true,
                 mostrarBoton: true,
                 controller: TextEditingController(),
+                validator: (value) {
+                  if (value!.length < 6) {
+                    return 'Ingrese una contraseña valida';
+                  }
+                  return null;
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -54,6 +74,13 @@ class InputsPage extends StatelessWidget {
                 icon: Icons.email,
                 type: TextInputType.emailAddress,
                 controller: correoController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Ingrese un correo';
+                  }
+
+                  return null;
+                },
               ),
               const Spacer(),
               // const ElevatedButton(onPressed: null, child: Text('holi'))

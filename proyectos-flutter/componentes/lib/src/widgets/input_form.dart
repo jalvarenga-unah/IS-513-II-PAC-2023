@@ -9,6 +9,7 @@ class InputForm extends StatefulWidget {
     this.type = TextInputType.text,
     this.mostrarBoton = false,
     required this.controller,
+    required this.validator,
   });
 
   final String label;
@@ -17,6 +18,9 @@ class InputForm extends StatefulWidget {
   final bool mostrarBoton;
   final TextInputType type;
   final TextEditingController controller;
+
+  //calback
+  final String? Function(String?) validator;
 
   @override
   State<InputForm> createState() => _InputFormState();
@@ -49,12 +53,7 @@ class _InputFormState extends State<InputForm> {
             : null,
         border: const OutlineInputBorder(),
       ),
-      validator: (valor) {
-        //esto es un "error"
-        if (valor!.isEmpty) return 'Ingrese su nombre';
-
-        return null;
-      },
+      validator: widget.validator,
       onChanged: (value) {
         //
       },
