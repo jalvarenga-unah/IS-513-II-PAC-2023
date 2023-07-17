@@ -7,6 +7,8 @@ class InputsPage extends StatelessWidget {
 
   final nombreController = TextEditingController();
   final correoController = TextEditingController();
+  final telefonoController = TextEditingController();
+  final contraseniaController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -41,7 +43,7 @@ class InputsPage extends StatelessWidget {
                 label: 'Ingrese su telefono',
                 icon: Icons.phone,
                 type: TextInputType.phone,
-                controller: TextEditingController(),
+                controller: telefonoController,
                 validator: (value) {
                   if (value!.length != 8) {
                     return 'Ingrese un telefono valido';
@@ -58,7 +60,7 @@ class InputsPage extends StatelessWidget {
                 icon: Icons.password,
                 obscureText: true,
                 mostrarBoton: true,
-                controller: TextEditingController(),
+                controller: contraseniaController,
                 validator: (value) {
                   if (value!.length < 6) {
                     return 'Ingrese una contraseña valida';
@@ -103,6 +105,16 @@ class InputsPage extends StatelessWidget {
     // }
     // nombreController.text = 'Nuevo valor';
 
-    print(formKey.currentState?.validate());
+    if (formKey.currentState!.validate()) {
+      final data = {
+        'nombre': nombreController.text,
+        'correo': correoController.text,
+        'telefono': telefonoController.text,
+        'contrasenia': contraseniaController.text,
+      };
+
+      //mandar a guardar al servidor
+      print(data);
+    }
   }
 }

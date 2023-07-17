@@ -40,7 +40,9 @@ class HomePage extends StatelessWidget {
               child: const Text('Inputs'),
             ),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Rutas.peticionesPage.name);
+              },
               child: const Text('Peticiones'),
             ),
             TextButton(

@@ -1,4 +1,5 @@
 import 'package:componentes/src/pages/imagenes_page.dart';
+import 'package:componentes/src/pages/peticiones_page.dart';
 
 import '../pages/home_page.dart';
 import '../pages/inputs_page.dart';
@@ -12,4 +13,5 @@ final rutas = {
   Rutas.listasConstrucor.name: (context) => const ListaConstPage(),
   Rutas.imagenesPage.name: (context) => const ImagenesPage(),
   Rutas.inputsPage.name: (context) => InputsPage(),
+  Rutas.peticionesPage.name: (context) => PeticionesPage(),
 };
