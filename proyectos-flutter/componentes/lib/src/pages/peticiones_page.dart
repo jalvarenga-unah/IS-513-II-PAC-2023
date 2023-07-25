@@ -1,3 +1,4 @@
+import 'package:componentes/src/models/producto.dart';
 import 'package:componentes/src/providers/peticiones_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -16,13 +17,42 @@ class PeticionesPage extends StatelessWidget {
         body: Center(
             child: FutureBuilder(
           future: peticionesProvider.getProductos(),
-          builder: (context, snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Producto>> snapshot) {
             if (snapshot.connectionState == ConnectionState.none) {
               return const Center(child: Text('No hay conexion'));
             }
 
+            if (snapshot.hasError) {
+              return Center(
+                  child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.cloud_off, size: 100),
+                  Text(
+                    '${snapshot.error}',
+                    style: const TextStyle(fontSize: 30),
+                  ),
+                ],
+              ));
+            }
+
             if (!snapshot.hasData) {
               return const CircularProgressIndicator();
+            }
+
+            if (snapshot.data!.isEmpty) {
+              return const Center(
+                  child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.cloud_off, size: 100),
+                  Text(
+                    'No hay datos',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ],
+              ));
             }
 
             return ListaProductos(productos: snapshot.data ?? []);
@@ -34,7 +64,7 @@ class PeticionesPage extends StatelessWidget {
 class ListaProductos extends StatelessWidget {
   const ListaProductos({super.key, required this.productos});
 
-  final List<dynamic> productos;
+  final List<Producto> productos;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +90,7 @@ class ListaProductos extends StatelessWidget {
 class ItemProduct extends StatelessWidget {
   const ItemProduct({super.key, required this.product});
 
-  final Map<String, dynamic> product;
+  final Producto product;
 
   @override
   Widget build(BuildContext context) {
@@ -71,18 +101,18 @@ class ItemProduct extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.network(
-              product['image'],
+              product.image,
               width: 120,
               fit: BoxFit.cover,
             ),
             Expanded(
               child: Column(
                 children: [
-                  Text(product['title']),
+                  Text(product.title),
                   Text(
-                    '${product['description'].length < 100 ? product['description'] : product['description'].substring(0, 100)}...',
+                    '${product.description.length < 100 ? product.description : product.description.substring(0, 100)}...',
                   ),
-                  Text('${product['price']}'),
+                  Text('${product.price}'),
                 ],
               ),
             )
