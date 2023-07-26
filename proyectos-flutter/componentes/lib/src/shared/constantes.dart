@@ -8,4 +8,5 @@ enum Rutas {
   listas,
   inputsPage,
   peticionesPage,
+  detalleProductoPage
 }

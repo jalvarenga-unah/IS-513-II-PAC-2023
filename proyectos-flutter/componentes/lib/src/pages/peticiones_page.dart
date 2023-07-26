@@ -1,5 +1,6 @@
 import 'package:componentes/src/models/producto.dart';
 import 'package:componentes/src/providers/peticiones_provider.dart';
+import 'package:componentes/src/shared/constantes.dart';
 import 'package:flutter/material.dart';
 
 class PeticionesPage extends StatelessWidget {
@@ -95,30 +96,39 @@ class ItemProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
-      child: Card(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.network(
-              product.image,
-              width: 120,
-              fit: BoxFit.cover,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Text(product.title),
-                  Text(
-                    '${product.description.length < 100 ? product.description : product.description.substring(0, 100)}...',
+        height: 200,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              Rutas.detalleProductoPage.name,
+              arguments: product,
+            );
+          },
+          child: Card(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.network(
+                  product.image,
+                  width: 120,
+                  fit: BoxFit.cover,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(product.title),
+                      Text(
+                        '${product.description.length < 100 ? product.description : product.description.substring(0, 100)}...',
+                      ),
+                      Text('${product.price}'),
+                    ],
                   ),
-                  Text('${product.price}'),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+                ),
+                //   IconButton(onPressed: () {}, icon: Icon(Icons.add_shopping_cart))
+              ],
+            ),
+          ),
+        ));
   }
 }

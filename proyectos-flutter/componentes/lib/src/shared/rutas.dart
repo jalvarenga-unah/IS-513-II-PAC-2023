@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/detalle_producto_page.dart';
 import 'package:componentes/src/pages/imagenes_page.dart';
 import 'package:componentes/src/pages/peticiones_page.dart';
 
@@ -13,5 +14,6 @@ final rutas = {
   Rutas.listasConstrucor.name: (context) => const ListaConstPage(),
   Rutas.imagenesPage.name: (context) => const ImagenesPage(),
   Rutas.inputsPage.name: (context) => InputsPage(),
-  Rutas.peticionesPage.name: (context) => PeticionesPage(),
+  Rutas.peticionesPage.name: (context) => const PeticionesPage(),
+  Rutas.detalleProductoPage.name: (context) => const DetalleProductoPage(),
 };
