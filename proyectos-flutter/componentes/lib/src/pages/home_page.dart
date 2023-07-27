@@ -1,5 +1,4 @@
 import 'package:componentes/src/shared/constantes.dart';
-import 'package:componentes/src/widgets/input_form.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -47,7 +46,8 @@ class HomePage extends StatelessWidget {
               child: const Text('Peticiones'),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.pushNamed(context, Rutas.manejoEstado.name),
               child: const Text('Manejo de estado'),
             ),
           ],

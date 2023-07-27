@@ -1,5 +1,6 @@
 import 'package:componentes/src/pages/detalle_producto_page.dart';
 import 'package:componentes/src/pages/imagenes_page.dart';
+import 'package:componentes/src/pages/manejo_estado_page.dart';
 import 'package:componentes/src/pages/peticiones_page.dart';
 
 import '../pages/home_page.dart';
@@ -16,4 +17,5 @@ final rutas = {
   Rutas.inputsPage.name: (context) => InputsPage(),
   Rutas.peticionesPage.name: (context) => const PeticionesPage(),
   Rutas.detalleProductoPage.name: (context) => const DetalleProductoPage(),
+  Rutas.manejoEstado.name: (context) => ManejoEstadoPage(),
 };

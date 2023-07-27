@@ -14,7 +14,7 @@ class PeticionesProvider {
     } catch (error) {
       //generando una nueva excepcion
       print('entró a ala excepcion');
-      throw Exception('${error}');
+      throw Exception('$error');
     }
     return responseProducts;
   }
