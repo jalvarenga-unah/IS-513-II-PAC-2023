@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 
 class ManejoEstadoPage extends StatelessWidget {
   ManejoEstadoPage({super.key});
+  final textStyle = const TextStyle(fontSize: 30);
 
-  final ContadorController contadorController = ContadorController();
+  // final contadorController = ContadorController();
+  //InheritedWidget
+  final contadorController = Get.put(ContadorController());
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = TextStyle(fontSize: 30);
-
     return Scaffold(
         appBar: AppBar(
           title: const Text('Manejo de estado'),
@@ -34,7 +35,6 @@ class ManejoEstadoPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             contadorController.contador++;
-            print(contadorController.contador);
           },
           child: const Icon(Icons.add),
         ));

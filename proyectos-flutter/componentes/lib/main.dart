@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),
       title: 'Material App',
-      initialRoute: Rutas.inicio.name,
+      initialRoute: Rutas.inicio.name, // '/home'
       routes: rutas,
       onGenerateRoute: (settings) {
         // print(settings.name);

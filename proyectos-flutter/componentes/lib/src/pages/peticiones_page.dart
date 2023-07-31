@@ -1,7 +1,9 @@
+import 'package:componentes/src/controllers/contador_controller.dart';
 import 'package:componentes/src/models/producto.dart';
 import 'package:componentes/src/providers/peticiones_provider.dart';
 import 'package:componentes/src/shared/constantes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PeticionesPage extends StatelessWidget {
   const PeticionesPage({super.key});
@@ -9,6 +11,7 @@ class PeticionesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final peticionesProvider = PeticionesProvider();
+
     // final datos = peticionesProvider.getProductos();
 
     return Scaffold(
