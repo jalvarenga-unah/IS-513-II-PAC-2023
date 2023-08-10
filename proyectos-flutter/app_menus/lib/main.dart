@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'home_controller.dart';
 import 'perfil_page.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  //detiene el proceso hasta que se resuelva el future
+  //genera una instancia global
+  await GetStorage.init(); //inicializa el contexto de GetStorage
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,10 +43,13 @@ class PrincipalPage extends StatelessWidget {
   });
 
   final homeController = Get.put(HomeController());
-  final pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
+    final box = GetStorage();
+    final pageController =
+        PageController(initialPage: homeController.currentIndex);
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('Instagram'),
@@ -81,7 +91,8 @@ class PrincipalPage extends StatelessWidget {
         ),
         body: PageView(
           controller: pageController,
-          onPageChanged: (index) {
+          onPageChanged: (index) async {
+            await box.write('lastIndex', index);
             homeController.currentIndex = index;
           },
           // scrollDirection: Axis.vertical,
@@ -100,7 +111,9 @@ class PrincipalPage extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
             currentIndex: homeController.currentIndex,
-            onTap: (index) {
+            onTap: (index) async {
+              await box.write('lastIndex', index);
+
               homeController.currentIndex = index;
               pageController.animateToPage(index,
                   duration: const Duration(milliseconds: 200),

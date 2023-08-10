@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "133676909368",
+    "firebase_url": "https://lp-unah-pac-3-default-rtdb.firebaseio.com",
+    "project_id": "lp-unah-pac-3",
+    "storage_bucket": "lp-unah-pac-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133676909368:android:9f331d9e3f4b561c4277cd",
+        "android_client_info": {
+          "package_name": "hn.edu.unah.app_notifiaciones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133676909368-vp9qi96l8403bqreu7qb89u1snub0efu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiCuGmrSOZYlBWLs_3E3PNJtg0LWtLNS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133676909368-vp9qi96l8403bqreu7qb89u1snub0efu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
